@@ -19,6 +19,20 @@ export enum Mood {
   ASHAMED = 'Xấu hổ',
   DISAPPOINTED = 'Thất vọng',
   BURNED_OUT = 'Kiệt sức',
+  HEARTBROKEN = 'Thất tình',
+  FRUSTRATED = 'Bực bội',
+  HOPELESS = 'Tuyệt vọng',
+  RESENTFUL = 'Phẫn nộ',
+  APATHETIC = 'Thờ ơ',
+  VULNERABLE = 'Dễ bị tổn thương',
+  MISUNDERSTOOD = 'Bị hiểu lầm',
+  REJECTED = 'Bị từ chối',
+  ENVIOUS = 'Đố kỵ',
+  EMPTY = 'Trống rỗng',
+  DOUBTFUL = 'Nghi ngờ',
+  INDECISIVE = 'Do dự',
+  AWKWARD = 'Ngại ngùng',
+  PRESSURE = 'Áp lực đồng lứa',
   
   // Positive / Empowering
   HAPPY = 'Hạnh phúc',
@@ -29,12 +43,27 @@ export enum Mood {
   PRODUCTIVE = 'Năng suất',
   HOPEFUL = 'Hy vọng',
   LOVED = 'Được yêu thương',
+  DETERMINED = 'Quyết tâm',
+  BRAVE = 'Can đảm',
+  CREATIVE = 'Sáng tạo',
+  ENERGETIC = 'Tràn đầy năng lượng',
+  PROUD = 'Tự hào',
+  AMBITIOUS = 'Tham vọng',
+  CONTENT = 'Hài lòng',
+  JOYFUL = 'Vui vẻ',
+  OPTIMISTIC = 'Lạc quan',
+  PLAYFUL = 'Ham chơi',
+  APPRECIATED = 'Được trân trọng',
+  FOCUSED = 'Tập trung',
+  ZEN = 'Tĩnh tại',
   
   // Neutral / Complex
   CURIOUS = 'Tò mò',
   NOSTALGIC = 'Hoài niệm',
   CONFUSED = 'Bối rối',
-  CALM = 'Điềm tĩnh'
+  CALM = 'Điềm tĩnh',
+  LAZY = 'Lười biếng',
+  DISTRACTED = 'Xao nhãng'
 }
 
 export interface MoodEntry {
@@ -49,7 +78,7 @@ export interface MotivationOption {
   quote: string;
   imageUrl: string;
   description: string;
-  imagePrompt?: string; // Optional prompt for late loading
+  imagePrompt?: string; 
 }
 
 export interface GeminiResponse {

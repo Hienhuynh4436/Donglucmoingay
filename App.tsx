@@ -8,29 +8,53 @@ import MoodHistory from './components/MoodHistory';
 import { Sparkles, ArrowLeft, AlertCircle, Zap } from 'lucide-react';
 
 const MOODS = [
+  // Nhóm Tiêu cực
   { mood: Mood.SAD, icon: '😔' },
   { mood: Mood.ANXIOUS, icon: '😰' },
   { mood: Mood.TIRED, icon: '😴' },
   { mood: Mood.LOST, icon: '📉' },
   { mood: Mood.ANGRY, icon: '😤' },
-  { mood: Mood.UNINSPIRED, icon: '💡' },
+  { mood: Mood.FRUSTRATED, icon: '😠' },
+  { mood: Mood.BURNED_OUT, icon: '🕯️' },
+  { mood: Mood.HEARTBROKEN, icon: '💔' },
+  { mood: Mood.OVERWHELMED, icon: '🌊' },
+  { mood: Mood.STRESSED, icon: '😫' },
   { mood: Mood.LONELY, icon: '👤' },
   { mood: Mood.BORED, icon: '😐' },
-  { mood: Mood.OVERWHELMED, icon: '🌊' },
-  { mood: Mood.FEARFUL, icon: '😨' },
-  { mood: Mood.STRESSED, icon: '😫' },
+  { mood: Mood.EMPTY, icon: '🕳️' },
+  { mood: Mood.HOPELESS, icon: '🌑' },
+  { mood: Mood.PRESSURE, icon: '👥' },
+  { mood: Mood.INSECURE, icon: '🥺' },
+  { mood: Mood.DISAPPOINTED, icon: '😞' },
+  { mood: Mood.REJECTED, icon: '🚫' },
+
+  // Nhóm Tích cực
   { mood: Mood.HAPPY, icon: '✨' },
   { mood: Mood.CONFIDENT, icon: '🦁' },
+  { mood: Mood.DETERMINED, icon: '⚡' },
+  { mood: Mood.BRAVE, icon: '🛡️' },
   { mood: Mood.GRATEFUL, icon: '🙏' },
   { mood: Mood.EXCITED, icon: '🚀' },
   { mood: Mood.PEACEFUL, icon: '🍃' },
   { mood: Mood.PRODUCTIVE, icon: '🐝' },
+  { mood: Mood.FOCUSED, icon: '🎯' },
+  { mood: Mood.CREATIVE, icon: '🎨' },
+  { mood: Mood.ENERGETIC, icon: '🔋' },
+  { mood: Mood.PROUD, icon: '🏆' },
   { mood: Mood.HOPEFUL, icon: '🌅' },
   { mood: Mood.LOVED, icon: '❤️' },
+  { mood: Mood.AMBITIOUS, icon: '🏔️' },
+  { mood: Mood.OPTIMISTIC, icon: '🌈' },
+
+  // Nhóm Phức tạp
+  { mood: Mood.ZEN, icon: '🧘' },
+  { mood: Mood.CALM, icon: '🕊️' },
   { mood: Mood.CURIOUS, icon: '🧐' },
   { mood: Mood.NOSTALGIC, icon: '📻' },
   { mood: Mood.CONFUSED, icon: '🌀' },
-  { mood: Mood.CALM, icon: '🧘' }
+  { mood: Mood.INDECISIVE, icon: '⚖️' },
+  { mood: Mood.LAZY, icon: '🦥' },
+  { mood: Mood.AWKWARD, icon: '😬' }
 ];
 
 const STORAGE_KEY_HISTORY = 'zenpulse_mood_history';
@@ -117,10 +141,10 @@ const App: React.FC = () => {
           <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] shadow-2xl shadow-blue-500/40 transform hover:rotate-12 transition-transform duration-500">
             <Sparkles className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-7xl font-serif font-bold tracking-tight bg-gradient-to-b from-white via-white to-slate-500 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-7xl font-serif font-bold tracking-tight bg-gradient-to-b from-white via-white to-slate-500 bg-clip-text text-transparent">
             ZenPulse
           </h1>
-          <p className="text-slate-400 text-xl font-medium tracking-wide">Tưới mát tâm hồn bằng năng lượng tích cực</p>
+          <p className="text-slate-400 text-lg md:text-xl font-medium tracking-wide">Tưới mát tâm hồn bằng năng lượng tích cực</p>
         </header>
 
         {error && (
@@ -132,8 +156,8 @@ const App: React.FC = () => {
 
         {!options.length && !loading ? (
           <div className="animate-reveal">
-            <h2 className="text-2xl font-serif font-bold mb-10 text-center text-slate-300 tracking-wider uppercase">Tâm trạng của bạn lúc này?</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 mb-16">
+            <h2 className="text-xl md:text-2xl font-serif font-bold mb-10 text-center text-slate-300 tracking-wider uppercase">Tâm trạng của bạn lúc này?</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4 mb-16">
               {MOODS.map((m) => (
                 <MoodButton
                   key={m.mood}
@@ -144,18 +168,18 @@ const App: React.FC = () => {
                 />
               ))}
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center sticky bottom-10 z-50">
               <button
                 disabled={!selectedMood}
                 onClick={handleGenerate}
-                className={`group relative px-16 py-6 rounded-full font-bold text-2xl transition-all duration-500 flex items-center gap-4 overflow-hidden ${
+                className={`group relative px-12 md:px-16 py-5 md:py-6 rounded-full font-bold text-xl md:text-2xl transition-all duration-500 flex items-center gap-4 overflow-hidden border border-white/10 ${
                   selectedMood 
-                    ? 'bg-blue-600 hover:bg-blue-500 shadow-[0_0_40px_rgba(37,99,235,0.4)] scale-100 hover:scale-105 active:scale-95' 
-                    : 'bg-slate-800 text-slate-500 opacity-50 cursor-not-allowed'
+                    ? 'bg-blue-600 hover:bg-blue-500 shadow-[0_20px_40px_rgba(37,99,235,0.4)] scale-100 hover:scale-105 active:scale-95' 
+                    : 'bg-slate-800/80 backdrop-blur-md text-slate-500 opacity-50 cursor-not-allowed'
                 }`}
               >
                 <span className="relative z-10">Tiếp Năng Lượng</span>
-                <Zap className={`w-6 h-6 relative z-10 transition-transform duration-500 group-hover:scale-125 ${selectedMood ? 'animate-bounce' : ''}`} />
+                <Zap className={`w-6 h-6 relative z-10 transition-transform duration-500 group-hover:scale-125 ${selectedMood ? 'animate-bounce text-yellow-300' : ''}`} />
               </button>
             </div>
           </div>
